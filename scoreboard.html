@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html" charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="tinstyle.css">
+  <title>Timer XP</title>
+</head>
+<body>
+  <form>
+  <h1>
+    Tistic Basketball Score Board
+  </h1>
+      <button type="button" onclick="appear()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </button>
+    <section id="aple">
+      <h3>Set Up Board</h3>
+      <div>
+        <h6>Team One</h6>
+        <div>
+      <label for="team_1">Team Name:</label>
+      <input type="text" id="team_1" placeholder="Team One">
+        </div>
+        <div>
+      <label for="team_Img1">Team Logo:</label>
+      <input type="text" id="team_Img1" placeholder="Image link/path">
+        </div>
+      <input type="button" value="Set up" onclick="toem()">
+      </div>
+          <div>
+            <h6>Team Two</h6>
+            <div>
+      <label for="team_2">Team Name:</label>
+      <input type="text" id="team_2" placeholder="Team One">
+            </div>
+            <div>
+      <label for="team_Img2">Team Logo:</label>
+      <input type="text" id="team_Img2" placeholder="Image link/path">
+            </div>
+      <input type="button" value="Set up" onclick="quant()">
+            <div>
+              <h6>Set Match Dutation</h6>
+              <div>
+               <input type="text" id="xx" placeholder="hours" value="00"/>
+               <input type="text" id="yy" placeholder="minutes" value="00"/>
+               <input type="text" id="zz" placeholder="seconds" value="00"/>
+              </div>
+               <input type="button" onClick="startime()" value="Start">
+               <input type="button" onclick="sytop()" id="_syp" value="Pause">
+            </div>
+      </div>
+    </section>
+    <aside>
+    <main class="mai2">
+    <div>
+      <img src="human.jpeg" id="image_1">
+      <h4 id="t$_1">TEAM ONE</h4>
+    </div>
+    <input type="text" value="0" id="score_1">
+      <div>
+    <input type="button" onclick="plus_1()" value="1">
+    <input type="button" onclick="plus_2()" value="2">
+    <input type="button" onclick="plus_3()" value="3">
+      </div>
+    </main>
+       <main class="mai1">
+    <div>
+      <img src="human.jpeg" id="image_2">
+      <h4 id="t$_2m">TEAM TWO</h4>
+    </div>
+    <input type="text" value="0" id="score_2">
+         <div>
+    <input type="button" onclick="plue()" value="1">
+    <input type="button" onclick="plye()" value="2">
+    <input type="button" onclick="pyt()" value="3">
+         </div>
+    </main>
+    </aside>
+    <aside style="text-align: center;">
+  <div id="tiem">
+    <span id="hh">00</span>:<span id="mm">00</span>:<span id="ss">00</span>
+  </div>
+    </aside>
+  </form>
+  <p id="yow" onload="typewriter()"></p>
+  <div id="dish"></div>
+  <script>
+  function appear(){
+    let sect = document.getElementById("aple");
+    if(sect.style.display == "none"){
+      sect.style.display = "block";
+    }else{
+      sect.style.display = "none";
+    }      
+  }
+  function toem(){
+    let to = document.getElementById("team_1");
+    let imfro = document.getElementById("team_Img1"); 
+    let imgo = document.getElementById("image_1");
+    let tem1 = document.getElementById("t$_1");
+    
+       tem1.innerHTML = to.value;
+       to.value = "";
+       
+       imgo.src = imfro.value;
+       imfro.value = "";
+  }
+  function quant(){
+    let tsl = document.getElementById("team_2");
+    let tlm = document.getElementById("team_Img2");
+    let gim = document.getElementById("image_2");
+    let oum = document.getElementById("t$_2m");
+    
+        oum.innerHTML = tsl.value;
+        tsl.value = "";
+     
+        gim.src = tlm.value;
+        tlm.value = "";
+  }
+  function plus_1(){
+    let score1 = document.getElementById("score_1");
+    score1.value = eval(Number(score1.value) + 1);
+  }
+  function plus_2(){
+    let score1 = document.getElementById("score_1");
+    score1.value = eval(Number(score1.value) + 2);
+  }
+  function plus_3(){
+    let score1 = document.getElementById("score_1");
+    score1.value = eval(Number(score1.value) + 3);
+  }
+  function plue(){
+    let score2 = document.getElementById("score_2");
+    score2.value = eval(Number(score2.value) + 1);
+  }
+  function plye(){
+    let score2 = document.getElementById("score_2");
+    score2.value = eval(Number(score2.value) + 2);
+  }
+  function pyt(){
+    let score2 = document.getElementById("score_2");
+    score2.value = eval(Number(score2.value) + 3);
+  }
+  let linter;
+  
+  function startime(){
+    let h = document.getElementById("hh");
+    let m = document.getElementById("mm");
+    let s = document.getElementById("ss");
+    let x = document.getElementById("xx");
+    let y = document.getElementById("yy");
+    let z = document.getElementById("zz");
+    
+    h.innerHTML = x.value;
+    m.innerHTML = y.value;
+    s.innerHTML = z.value;
+    x.value = 0;
+    y.value = 0;
+    z.value = 0;
+    
+    let linter = setInterval(timer,1000);
+    function timer(){
+      if(s.innerHTML > 0){
+        s.innerHTML = s.innerHTML -1;
+      }
+       while(s.innerHTML == 0){
+         if(m.innerHTML > 0){
+          m.innerHTML = m.innerHTML -1;
+          s.innerHTML = 60;
+         }else{
+           break;
+         }
+        }
+      while(m.innerHTML == 0){
+        if(h.innerHTML > 0){
+        h.innerHTML = h.innerHTML -1;
+        m.innerHTML = 60;
+        }else{
+          break;
+        }
+      }
+      if(h.innerHTML == 0 && m.innerHTML == 0 && s.innerHTML == 0){
+        clearInterval(linter);
+        let end = document.getElementById("tiem");
+        end.innerHTML = "TIME UP..."
+        end.style.background = "tomato";
+        end.style.color = "white";
+        end.style.fontSize = "5em";
+        end.style.textAlign = "center";
+      }
+    }
+  }
+    function sytop(){
+      let btn = document.getElementById("_syp");
+      console.log(sytop);
+      if(btn.innerHTML === "Pause"){
+        clearInterval(linter);
+        btn.innerHTML = "Play";
+      }else{
+        linter = setInterval(timer,1000);
+        btn.innerHTML = "Pause";
+      }
+    }
+  var dusp = document.getElementById("yow");
+    var i = 0;
+    var txt = "Hello World and People. This is the Tistic Webs Generation of absolute Glory. Praise be to the Lord...";
+    const interv = setInterval(typewriter,100);
+  function typewriter(){
+    if(i < txt.length){
+      dusp.innerHTML += txt.charAt(i);
+      i++;
+    }else{
+      clearInterval(interv);
+    } 
+  }
+  </script>
+</body>
+</html>
